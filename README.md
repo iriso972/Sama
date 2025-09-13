@@ -38,7 +38,7 @@
 робота. Проверку необходимо выполнить вручную: кликнуть чек-бокс и выполнить требуемые действия.
 
 ## Стек технологий:
-pytest
-selenium
-requests
-allure
+- pytest
+- selenium
+- requests
+- allure
