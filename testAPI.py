@@ -1,8 +1,12 @@
 import requests
 import allure
 import pytest
+from dotenv import load_dotenv
+import os
 
-token = ""  #Будет в сопроводительном письме, так как репозиторий открытый
+load_dotenv('const.env')
+
+token = os.environ.get('token')
 
 
 @pytest.mark.api
@@ -12,7 +16,7 @@ def test_bez_id():
     with allure.step("Подготавливаем заголовки запроса с токеном"):
         headers = {
             "accept": "application/json",
-            "X-API-KEY": "token"
+            "X-API-KEY": token
          }
     with allure.step("Отправляем GET запрос с пустым id"):
         response = requests.get("https://api.kinopoisk.dev/v1.4/movie/id",
@@ -28,7 +32,7 @@ def test_search_film_id():
     with allure.step("Подготавливаем заголовки запроса с токеном"):
         headers = {
             "accept": "application/json",
-            "X-API-KEY": "token"
+            "X-API-KEY": token
         }
     with allure.step("Отправляем GET запрос с id фильма"):
         response = requests.get("https://api.kinopoisk.dev/v1.4/movie/1395460",
@@ -44,7 +48,7 @@ def test_search_by_name():
     with allure.step("Подготавливаем заголовки запроса с токеном"):
         headers = {
             "accept": "application/json",
-            "X-API-KEY": "token"
+            "X-API-KEY": token
          }
     with allure.step("Отправляем GET запрос с поисковым запросом"):
         response = requests.get(
@@ -62,7 +66,7 @@ def test_by_genres():
     with allure.step("Подготавливаем заголовки запроса с токеном"):
         headers = {
             "accept": "application/json",
-            "X-API-KEY": "token"
+            "X-API-KEY": token
         }
     with allure.step("Отправляем GET запрос списка жанров"):
         response = requests.get("https://api.kinopoisk."
